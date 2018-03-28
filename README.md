@@ -2,7 +2,7 @@
 Spring boot application for audit logging a class or a method. Audit is enabled by annotating a method or class with the 
 annotation **@Audit**
 
-Sensible parameters can be ommitted from the audit log if annotated with **@AuditSkip**
+Sensible parameters can be omitted from the audit log if annotated with **@AuditSkip**
 
 ### Properties
 - **mypages.audit.trace.enabled** - If set to true, all trace logging will be enabled. Default value is true
