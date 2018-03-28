@@ -1,8 +1,0 @@
-/Users/niklas.wiken/Repos/audit-log/src/test/java/se/prv/mypages/audit/ProfileAspectTest.java
-/Users/niklas.wiken/Repos/audit-log/src/test/java/se/prv/mypages/audit/aop/SingleInputInterface.java
-/Users/niklas.wiken/Repos/audit-log/src/test/java/se/prv/mypages/audit/AuditAspectTest.java
-/Users/niklas.wiken/Repos/audit-log/src/test/java/se/prv/mypages/audit/aop/AopClassAnnotatedAudit.java
-/Users/niklas.wiken/Repos/audit-log/src/test/java/se/prv/mypages/audit/aop/AopTestInterface.java
-/Users/niklas.wiken/Repos/audit-log/src/test/java/se/prv/mypages/audit/aop/AopMethodAnnotadedAudit.java
-/Users/niklas.wiken/Repos/audit-log/src/test/java/se/prv/mypages/audit/TestAppender.java
-/Users/niklas.wiken/Repos/audit-log/src/test/java/se/prv/mypages/audit/aop/SingleInputInterfaceImpl.java

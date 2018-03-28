@@ -1,8 +1,0 @@
-se/prv/mypages/audit/autoconfigure/AuditProperties.class
-se/prv/mypages/audit/logcontext/LoggerAuditSingletonFactory.class
-se/prv/mypages/audit/aop/AuditAspect.class
-se/prv/mypages/audit/aop/ProfileAspect.class
-se/prv/mypages/audit/aop/Audit.class
-se/prv/mypages/audit/autoconfigure/AuditConfiguration.class
-se/prv/mypages/audit/aop/AuditSkip.class
-se/prv/mypages/audit/logcontext/LoggerAuditFactory.class
