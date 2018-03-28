@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AuditConfiguration.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Audit Logging</a> &gt; <a href="index.source.html" class="el_package">se.prv.mypages.audit.autoconfigure</a> &gt; <span class="el_source">AuditConfiguration.java</span></div><h1>AuditConfiguration.java</h1><pre class="source lang-java linenums">package se.prv.mypages.audit.autoconfigure;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import se.prv.mypages.audit.aop.AuditAspect;
+import se.prv.mypages.audit.aop.ProfileAspect;
+
+@Configuration
+@EnableConfigurationProperties(AuditProperties.class)
+<span class="nc" id="L13">public class AuditConfiguration {</span>
+
+    @Autowired
+    private AuditProperties auditProperties;
+
+    @Bean
+    @ConditionalOnProperty(prefix = &quot;mypages.audit.trace&quot;, value = &quot;enabled&quot;, havingValue = &quot;true&quot;, matchIfMissing = true)
+    public AuditAspect createAuditAspect() {
+<span class="nc" id="L21">        return new AuditAspect(auditProperties);</span>
+    }
+
+    @Bean
+    @ConditionalOnProperty(prefix = &quot;mypages.audit.profile&quot;, value = &quot;enabled&quot;, havingValue = &quot;true&quot;)
+    public ProfileAspect createProfilingAspect() {
+<span class="nc" id="L27">        return new ProfileAspect();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

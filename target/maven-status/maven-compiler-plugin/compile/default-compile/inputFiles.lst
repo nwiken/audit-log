@@ -1,0 +1,8 @@
+/Users/niklas.wiken/Repos/audit-log/src/main/java/se/prv/mypages/audit/logcontext/LoggerAuditSingletonFactory.java
+/Users/niklas.wiken/Repos/audit-log/src/main/java/se/prv/mypages/audit/aop/AuditSkip.java
+/Users/niklas.wiken/Repos/audit-log/src/main/java/se/prv/mypages/audit/autoconfigure/AuditProperties.java
+/Users/niklas.wiken/Repos/audit-log/src/main/java/se/prv/mypages/audit/aop/AuditAspect.java
+/Users/niklas.wiken/Repos/audit-log/src/main/java/se/prv/mypages/audit/logcontext/LoggerAuditFactory.java
+/Users/niklas.wiken/Repos/audit-log/src/main/java/se/prv/mypages/audit/aop/Audit.java
+/Users/niklas.wiken/Repos/audit-log/src/main/java/se/prv/mypages/audit/autoconfigure/AuditConfiguration.java
+/Users/niklas.wiken/Repos/audit-log/src/main/java/se/prv/mypages/audit/aop/ProfileAspect.java

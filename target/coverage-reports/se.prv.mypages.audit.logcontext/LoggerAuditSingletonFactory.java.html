@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>LoggerAuditSingletonFactory.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Audit Logging</a> &gt; <a href="index.source.html" class="el_package">se.prv.mypages.audit.logcontext</a> &gt; <span class="el_source">LoggerAuditSingletonFactory.java</span></div><h1>LoggerAuditSingletonFactory.java</h1><pre class="source lang-java linenums">package se.prv.mypages.audit.logcontext;
+
+import ch.qos.logback.classic.LoggerContext;
+import ch.qos.logback.classic.util.ContextInitializer;
+import ch.qos.logback.core.joran.spi.JoranException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+class LoggerAuditSingletonFactory {
+
+<span class="fc" id="L17">    private static final Logger LOGGER = LoggerFactory.getLogger(LoggerAuditFactory.class);</span>
+<span class="fc" id="L18">    private static final LoggerContext LC = new LoggerContext();</span>
+    private static LoggerAuditSingletonFactory loggerAuditSingletonFactory;
+
+<span class="fc" id="L21">    private static final List&lt;String&gt; DEFAULT_CONFIGS = Collections.unmodifiableList(Arrays.asList(</span>
+            &quot;logback-test-audit.xml&quot;,
+            &quot;logback-audit.xml&quot;
+    ));
+<span class="fc" id="L25">    private LoggerAuditSingletonFactory() {}</span>
+
+    static LoggerAuditSingletonFactory getInstance() {
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">        if(loggerAuditSingletonFactory == null) {</span>
+<span class="fc" id="L29">            loggerAuditSingletonFactory = new LoggerAuditSingletonFactory();</span>
+<span class="fc" id="L30">            loggerAuditSingletonFactory.init();</span>
+        }
+<span class="fc" id="L32">        return loggerAuditSingletonFactory;</span>
+    }
+
+    private void init() {
+<span class="fc" id="L36">        Boolean initialized = false;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for(String path : DEFAULT_CONFIGS) {</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">            if(!initialized) {</span>
+<span class="fc" id="L39">                initialized = configureIf(path);</span>
+            }
+<span class="fc" id="L41">        }</span>
+<span class="fc" id="L42">    }</span>
+
+    Logger getLogger(String name) {
+<span class="fc" id="L45">        return LC.getLogger(name);</span>
+    }
+
+    private static Boolean configureIf(String config) {
+        try {
+<span class="fc" id="L50">            URL url = Optional.of(LoggerAuditFactory.class)</span>
+<span class="fc" id="L51">                    .map(Class::getClassLoader)</span>
+<span class="fc" id="L52">                    .map(cl -&gt; cl.getResource(config))</span>
+<span class="fc" id="L53">                    .orElseThrow(IllegalArgumentException::new);</span>
+
+<span class="fc" id="L55">            new ContextInitializer(LC).configureByResource(url);</span>
+<span class="fc" id="L56">            LOGGER.info(&quot;Found resource [{}]&quot;, config);</span>
+<span class="fc" id="L57">            return true;</span>
+<span class="nc" id="L58">        } catch (IllegalArgumentException | JoranException e) {</span>
+<span class="nc" id="L59">            LOGGER.info(&quot;Could NOT find resource [{}]&quot;, config);</span>
+<span class="nc" id="L60">            return false;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

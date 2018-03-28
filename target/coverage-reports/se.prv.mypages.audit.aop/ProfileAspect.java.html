@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ProfileAspect.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Audit Logging</a> &gt; <a href="index.source.html" class="el_package">se.prv.mypages.audit.aop</a> &gt; <span class="el_source">ProfileAspect.java</span></div><h1>ProfileAspect.java</h1><pre class="source lang-java linenums">package se.prv.mypages.audit.aop;
+
+import net.logstash.logback.marker.Markers;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.slf4j.Logger;
+import se.prv.mypages.audit.logcontext.LoggerAuditFactory;
+
+@Aspect
+<span class="fc" id="L11">public class ProfileAspect {</span>
+
+<span class="fc" id="L13">    private static final Logger LOGGER = LoggerAuditFactory.getLogger(&quot;profile-log&quot;);</span>
+    private static final String DURATION = &quot;duration&quot;;
+
+    @Around(&quot;@within(se.prv.mypages.audit.aop.Audit) || @annotation(se.prv.mypages.audit.aop.Audit)&quot;)
+    public Object profileMethod(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+<span class="fc" id="L18">        Long startTime = System.currentTimeMillis();</span>
+<span class="fc" id="L19">        Object retVal = proceedingJoinPoint.proceed();</span>
+<span class="fc" id="L20">        Long elapsedTime = System.currentTimeMillis() - startTime;</span>
+<span class="pc bpc" id="L21" title="1 of 2 branches missed.">        if(LOGGER.isInfoEnabled()) {</span>
+<span class="fc" id="L22">            LOGGER.info(Markers.append(DURATION, elapsedTime.toString()), &quot;Profiling method: {}.{}&quot;,</span>
+<span class="fc" id="L23">                    proceedingJoinPoint.getTarget().getClass().getCanonicalName(), proceedingJoinPoint.getSignature().getName());</span>
+        }
+<span class="fc" id="L25">        return retVal;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>
