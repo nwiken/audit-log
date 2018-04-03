@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=se.prv.mypages.audit.autoconfigure.AuditConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=AuditConfiguration

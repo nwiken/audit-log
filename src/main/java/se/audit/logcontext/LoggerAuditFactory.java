@@ -1,4 +1,4 @@
-package se.prv.mypages.audit.logcontext;
+package se.audit.logcontext;
 
 import org.slf4j.Logger;
 

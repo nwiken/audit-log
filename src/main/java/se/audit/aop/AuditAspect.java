@@ -1,4 +1,4 @@
-package se.prv.mypages.audit.aop;
+package se.audit.aop;
 
 import net.logstash.logback.marker.Markers;
 import org.apache.commons.lang3.StringUtils;
@@ -8,8 +8,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
-import se.prv.mypages.audit.autoconfigure.AuditProperties;
-import se.prv.mypages.audit.logcontext.LoggerAuditFactory;
+import se.audit.autoconfigure.AuditProperties;
+import se.audit.logcontext.LoggerAuditFactory;
 
 import java.lang.reflect.Parameter;
 import java.util.Collections;
@@ -32,7 +32,7 @@ public class AuditAspect {
         this.auditProperties = auditProperties;
     }
 
-    @Before(value = "@within(se.prv.mypages.audit.aop.Audit) || @annotation(se.prv.mypages.audit.aop.Audit)")
+    @Before(value = "@within(se.audit.aop.Audit) || @annotation(se.audit.aop.Audit)")
     public void auditBeforeMessagesServerMethod(JoinPoint joinPoint) {
         List<String> loggableParameters = getLoggableParameters(joinPoint);
         String parametersAsString = StringUtils.join(loggableParameters, SEPARATOR);
@@ -42,7 +42,7 @@ public class AuditAspect {
                 ">{}(args: {})", methodName, parametersAsString);
     }
 
-    @AfterReturning(value = "@within(se.prv.mypages.audit.aop.Audit) || @annotation(se.prv.mypages.audit.aop.Audit)",
+    @AfterReturning(value = "@within(se.audit.aop.Audit) || @annotation(se.audit.aop.Audit)",
             returning = "returnValue")
     public Object auditAfterMessageServerMethod(JoinPoint joinPoint, Object returnValue) {
         String returnValueAsString = returnValue == null ? "null" : truncateString(returnValue.toString());

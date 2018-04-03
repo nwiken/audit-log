@@ -1,4 +1,4 @@
-package se.prv.mypages.audit.aop;
+package se.audit.aop;
 
 public class AopMethodAnnotadedAudit implements AopTestInterface {
 

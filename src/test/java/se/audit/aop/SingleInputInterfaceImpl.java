@@ -1,4 +1,4 @@
-package se.prv.mypages.audit.aop;
+package se.audit.aop;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

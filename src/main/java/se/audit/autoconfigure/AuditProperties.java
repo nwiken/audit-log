@@ -1,8 +1,8 @@
-package se.prv.mypages.audit.autoconfigure;
+package se.audit.autoconfigure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "mypages.audit")
+@ConfigurationProperties(prefix = "audit")
 public class AuditProperties {
 
     private Integer maxOutputLength = 200;

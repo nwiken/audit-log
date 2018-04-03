@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration scan="false">
     <contextName>logging</contextName>
-    <appender name="testAppender" class="se.prv.mypages.audit.TestAppender">
+    <appender name="testAppender" class="se.audit.TestAppender">
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <includeMdc>false</includeMdc>
         </encoder>

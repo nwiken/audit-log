@@ -1,4 +1,4 @@
-package se.prv.mypages.audit.logcontext;
+package se.audit.logcontext;
 
 import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.util.ContextInitializer;

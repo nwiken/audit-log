@@ -1,4 +1,4 @@
-package se.prv.mypages.audit;
+package se.audit;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.AppenderBase;

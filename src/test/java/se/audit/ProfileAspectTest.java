@@ -1,12 +1,12 @@
-package se.prv.mypages.audit;
+package se.audit;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.aop.aspectj.annotation.AspectJProxyFactory;
-import se.prv.mypages.audit.aop.AopClassAnnotatedAudit;
-import se.prv.mypages.audit.aop.AopMethodAnnotadedAudit;
-import se.prv.mypages.audit.aop.AopTestInterface;
-import se.prv.mypages.audit.aop.ProfileAspect;
+import se.audit.aop.AopClassAnnotatedAudit;
+import se.audit.aop.AopMethodAnnotadedAudit;
+import se.audit.aop.AopTestInterface;
+import se.audit.aop.ProfileAspect;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

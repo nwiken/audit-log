@@ -1,11 +1,11 @@
-package se.prv.mypages.audit.aop;
+package se.audit.aop;
 
 import net.logstash.logback.marker.Markers;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
-import se.prv.mypages.audit.logcontext.LoggerAuditFactory;
+import se.audit.logcontext.LoggerAuditFactory;
 
 @Aspect
 public class ProfileAspect {
@@ -13,7 +13,7 @@ public class ProfileAspect {
     private static final Logger LOGGER = LoggerAuditFactory.getLogger("profile-log");
     private static final String DURATION = "duration";
 
-    @Around("@within(se.prv.mypages.audit.aop.Audit) || @annotation(se.prv.mypages.audit.aop.Audit)")
+    @Around("@within(se.audit.aop.Audit) || @annotation(se.audit.aop.Audit)")
     public Object profileMethod(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Long startTime = System.currentTimeMillis();
         Object retVal = proceedingJoinPoint.proceed();
