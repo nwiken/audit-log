@@ -122,11 +122,16 @@
 			<id>sonar</id>
 			<properties>
 				<sonar.jacoco.reportPaths>target/coverage-reports/jacoco-ut.exec</sonar.jacoco.reportPaths>
-				<sonar.projectName>Audit Log</sonar.projectName>
+			</properties>
+		</profile>
+		<profile>
+			<id>pull-request</id>
+			<properties>
 				<sonar.github.repository>nwiken/audit-log</sonar.github.repository>
 				<sonar.github.endpoint>=https://api.github.com</sonar.github.endpoint>
 				<sonar.github.oauth>6f4d4560cd81b88fad4043020153d54ff685e47d</sonar.github.oauth>
 				<sonar.github.disableInlineComments>false</sonar.github.disableInlineComments>
+				<sonar.jacoco.reportPaths>target/coverage-reports/jacoco-ut.exec</sonar.jacoco.reportPaths>
 			</properties>
 		</profile>
 	</profiles>
