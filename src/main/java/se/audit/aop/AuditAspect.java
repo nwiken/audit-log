@@ -46,6 +46,7 @@ public class AuditAspect {
             returning = "returnValue")
     public Object auditAfterMessageServerMethod(JoinPoint joinPoint, Object returnValue) {
         String returnValueAsString = returnValue == null ? "null" : truncateString(returnValue.toString());
+        System.out.println("du kommentar som sonar borde hitta");
 
         LOGGER.info(Markers.append(MARKER_CLASS, joinPoint.getTarget().getClass().getCanonicalName()),
                 "<{}({})", joinPoint.getSignature().getName(), returnValueAsString);
@@ -69,7 +70,11 @@ public class AuditAspect {
     }
 
     private String truncateString(String longString) {
-        String limitedString = longString.substring(0, Math.min(longString.length(), auditProperties.getMaxOutputLength()));
+        String limitedString = null;
+        try {
+            limitedString = longString.substring(0, Math.min(longString.length(), auditProperties.getMaxOutputLength()));
+        } catch (Exception e) {
+        }
         return limitedString.equals(longString) ? limitedString : limitedString + TRUNCATED_SUFFIX;
     }
 }
